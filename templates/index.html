@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Lunch Invitation{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-4">💕 Lunch Invitation 💕</h1>
+        <p class="lead mb-4">Ready to make someone's day?</p>
+        <div class="meme-quote mb-4">
+            <p class="h5 fw-light">"Hey, wanna grab lunch?"</p>
+            <p class="small opacity-75">- Every person who's ever been nervous</p>
+        </div>
+        <a href="{{ url_for('ask_lunch') }}" class="btn btn-light btn-lg px-5 fw-bold">
+            Let's Go! 🚀
+        </a>
+    </div>
+</section>
+
+<style>
+.meme-quote {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+</style>
+{% endblock %}

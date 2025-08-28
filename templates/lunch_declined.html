@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Lunch Declined{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5 text-center">
+                        <div class="decline-header mb-4">
+                            <h2 class="fw-bold text-muted mb-3">No worries! 😊</h2>
+                            <p class="lead text-muted">Maybe another time</p>
+                        </div>
+                        
+                        <div class="meme-quote mb-4">
+                            <p class="h5 text-muted">"Rejection is just redirection"</p>
+                            <p class="small text-muted">- Every motivational speaker ever</p>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="{{ url_for('reset') }}" class="btn btn-primary btn-lg px-5 me-3">
+                                Try Again 💫
+                            </a>
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-lg px-5">
+                                Home 🏠
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.decline-header {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px dashed #fd79a8;
+}
+
+.meme-quote {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 4px solid #667eea;
+}
+</style>
+{% endblock %}

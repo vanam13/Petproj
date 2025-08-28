@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Select Day{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold text-primary mb-4">Almost there! 🎉</h2>
+                        <p class="lead text-muted mb-4">Pick a day and we're all set!</p>
+                        
+                        <form method="POST" class="d-inline">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-5">
+                                    <div class="day-card border-2 border-primary h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <div class="day-emoji mb-3">🌅</div>
+                                            <h4 class="fw-bold text-primary">Tuesday</h4>
+                                            <p class="text-muted small">Start the week right!</p>
+                                            <button type="submit" name="day" value="tuesday" class="btn btn-primary btn-lg w-100">
+                                                Tuesday it is! ✨
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-5">
+                                    <div class="day-card border-2 border-success h-100">
+                                        <div class="card-body p-4 text-center">
+                                            <div class="day-emoji mb-3">🌤️</div>
+                                            <h4 class="fw-bold text-success">Wednesday</h4>
+                                            <p class="text-muted small">Midweek magic!</p>
+                                            <button type="submit" name="day" value="wednesday" class="btn btn-success btn-lg w-100">
+                                                Wednesday works! ✨
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="mt-5">
+                            <a href="{{ url_for('show_restaurants', cuisine=session.get('selected_cuisine', 'italian')) }}" class="btn btn-outline-primary me-2">
+                                Back to Restaurants
+                            </a>
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                                Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.day-card {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.day-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.day-emoji {
+    font-size: 3rem;
+}
+</style>
+{% endblock %}
