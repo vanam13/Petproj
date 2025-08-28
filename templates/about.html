@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}About - Flask App{% endblock %}
+
+{% block content %}
+<!-- About Hero -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold">About Us</h1>
+                <p class="lead">Learn more about our mission and the team behind Flask App</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">Our Mission</h2>
+                <p class="lead text-muted mb-4">
+                    We're passionate about creating web applications that are not only functional but also beautiful and user-friendly.
+                </p>
+                <p class="mb-4">
+                    Our Flask application demonstrates modern web development practices, combining the power and flexibility of Python with cutting-edge frontend technologies.
+                </p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Modern Design</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Responsive Layout</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Fast Performance</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Secure Code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <h4 class="fw-bold mb-3">Why Choose Flask?</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-arrow-right text-primary me-2"></i>Lightweight and flexible</li>
+                            <li class="mb-2"><i class="fas fa-arrow-right text-primary me-2"></i>Easy to learn and use</li>
+                            <li class="mb-2"><i class="fas fa-arrow-right text-primary me-2"></i>Great for prototyping</li>
+                            <li class="mb-2"><i class="fas fa-arrow-right text-primary me-2"></i>Extensive documentation</li>
+                            <li class="mb-2"><i class="fas fa-arrow-right text-primary me-2"></i>Large community support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-2x text-primary mb-3"></i>
+                        <h3 class="fw-bold">1000+</h3>
+                        <p class="text-muted">Happy Users</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-code fa-2x text-success mb-3"></i>
+                        <h3 class="fw-bold">50K+</h3>
+                        <p class="text-muted">Lines of Code</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-rocket fa-2x text-warning mb-3"></i>
+                        <h3 class="fw-bold">99.9%</h3>
+                        <p class="text-muted">Uptime</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-heart fa-2x text-danger mb-3"></i>
+                        <h3 class="fw-bold">24/7</h3>
+                        <p class="text-muted">Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

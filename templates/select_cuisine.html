@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Select Cuisine{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-primary">Pick your poison 🍽️</h2>
+                    <p class="text-muted">What are you craving today?</p>
+                </div>
+                
+                <div class="row g-4">
+                    {% for cuisine in cuisines %}
+                    <div class="col-md-4">
+                        <a href="{{ url_for('show_restaurants', cuisine=cuisine) }}" class="text-decoration-none">
+                            <div class="card h-100 text-center border-0 shadow-sm cuisine-card">
+                                <div class="card-body p-4">
+                                    <div class="cuisine-emoji mb-3">
+                                        {% if cuisine == 'italian' %}
+                                            🍕
+                                        {% elif cuisine == 'chinese' %}
+                                            🥟
+                                        {% elif cuisine == 'indian' %}
+                                            🍛
+                                        {% elif cuisine == 'mexican' %}
+                                            🌮
+                                        {% elif cuisine == 'japanese' %}
+                                            🍣
+                                        {% endif %}
+                                    </div>
+                                    <h5 class="card-title fw-bold text-capitalize">{{ cuisine }}</h5>
+                                    <p class="card-text text-muted small">Click to explore</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.cuisine-card {
+    cursor: pointer;
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+    border: 2px solid transparent;
+}
+
+.cuisine-card:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.cuisine-emoji {
+    font-size: 3rem;
+}
+</style>
+{% endblock %}

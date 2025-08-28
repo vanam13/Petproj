@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Select Restaurant{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-primary">Time to pick! 🎯</h2>
+                    <p class="text-muted">Which place catches your eye?</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    {% for restaurant in restaurants %}
+                    <div class="col-md-6">
+                        <div class="restaurant-card h-100 border-0 shadow-lg" data-restaurant="{{ restaurant.name }}">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h4 class="card-title fw-bold text-primary">{{ restaurant.name }}</h4>
+                                    <div class="text-end">
+                                        <div class="badge bg-warning text-dark mb-1">
+                                            ⭐ {{ restaurant.rating }}
+                                        </div>
+                                        <div class="badge bg-success">{{ restaurant.price }}</div>
+                                    </div>
+                                </div>
+                                
+                                <p class="card-text text-muted mb-3">{{ restaurant.description }}</p>
+                                
+                                <div class="selection-indicator">
+                                    <span class="text-success fw-bold">Click to select</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="text-center">
+                    <div class="alert alert-info d-inline-block">
+                        <strong>Pick a restaurant above!</strong> Then click Next! 🚀
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button id="nextBtn" class="btn btn-success btn-lg px-5" disabled>
+                            Next
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('select_cuisine') }}" class="btn btn-outline-primary me-2">
+                        Back to Cuisines
+                    </a>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<form id="restaurantForm" method="POST" action="{{ url_for('select_restaurant') }}" style="display: none;">
+    <input type="hidden" name="restaurant" id="selectedRestaurant">
+</form>
+
+<style>
+.restaurant-card {
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.restaurant-card:hover {
+    border-color: #667eea;
+    transform: translateY(-5px);
+}
+
+.restaurant-card.selected {
+    border-color: #56ab2f;
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+    transform: scale(1.02);
+}
+
+.selection-indicator {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+</style>
+
+<script>
+let selectedRestaurant = '';
+
+document.querySelectorAll('.restaurant-card').forEach(card => {
+    card.addEventListener('click', function() {
+        // Remove selection from all cards
+        document.querySelectorAll('.restaurant-card').forEach(c => c.classList.remove('selected'));
+        
+        // Select this card
+        this.classList.add('selected');
+        selectedRestaurant = this.dataset.restaurant;
+        
+        // Enable next button
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('nextBtn').innerHTML = 'Next! 🎉';
+    });
+});
+
+document.getElementById('nextBtn').addEventListener('click', function() {
+    if (selectedRestaurant) {
+        document.getElementById('selectedRestaurant').value = selectedRestaurant;
+        document.getElementById('restaurantForm').submit();
+    }
+});
+</script>
+{% endblock %}
