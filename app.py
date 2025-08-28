@@ -121,6 +121,35 @@ Good luck! 🚀"""
         print(f"WhatsApp error: {e}")
         return False
 
+def send_decline_notification():
+    """Send WhatsApp notification when lunch is declined"""
+    try:
+        message_body = f"""😔 *LUNCH INVITATION DECLINED* 😔
+
+💔 *She said NO to lunch with you*
+
+*Don't worry, here are some tips:*
+• It's not the end of the world
+• Maybe she's busy or has other plans
+• You can try again another time
+• Focus on other opportunities
+
+*Remember:* Rejection is just redirection! 🚀
+
+Keep your head up! 💪"""
+
+        message = twilio_client.messages.create(
+            from_=TWILIO_PHONE_NUMBER,
+            body=message_body,
+            to=YOUR_WHATSAPP_NUMBER
+        )
+        
+        print(f"Decline notification sent! SID: {message.sid}")
+        return True
+    except Exception as e:
+        print(f"WhatsApp decline notification error: {e}")
+        return False
+
 @app.route('/')
 def index():
     session.clear()
@@ -134,6 +163,8 @@ def ask_lunch():
             session['lunch_agreed'] = True
             return redirect(url_for('select_cuisine'))
         else:
+            # Send decline notification immediately when they say no
+            send_decline_notification()
             return redirect(url_for('lunch_declined'))
     
     return render_template('ask_lunch.html')
