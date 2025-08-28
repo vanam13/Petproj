@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from twilio.rest import Client
 import os
-from config import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER, YOUR_WHATSAPP_NUMBER
 
 app = Flask(__name__)
 app.secret_key = 'lunch-invitation-secret-key'
+
+# Use environment variables in production, fallback to actual credentials for deployment
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', 'AC54a22f570fa81166ad8d167b40f88904')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN', 'd015d6b26432480833c0122d231cace5')
+TWILIO_PHONE_NUMBER = os.environ.get('TWILIO_PHONE_NUMBER', 'whatsapp:+14155238886')
+YOUR_WHATSAPP_NUMBER = os.environ.get('YOUR_WHATSAPP_NUMBER', 'whatsapp:+919490169690')
 
 # Initialize Twilio client
 twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
